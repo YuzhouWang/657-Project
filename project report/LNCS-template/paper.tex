@@ -131,68 +131,123 @@ pdfstartview=Fit
 \input glyphtounicode.tex
 \pdfgentounicode=1
 
-\title{Paper Title}
+\title{ECE 657A Project Report}
 %If Title is too long, use \titlerunning
 %\titlerunning{Short Title}
 
 %Single insitute
-\author{Firstname Lastname \and Firstname Lastname}
+\author{Laura McCrackin (20262085),Yuzhou Wang (20609396) \and Huang Tianhui (20587328)}
 %If there are too many authors, use \authorrunning
 %\authorrunning{First Author et al.}
-\institute{Institute}
+\institute{University of Waterloo}
 
 %Multiple insitutes
 %Currently disabled
 %
 \iffalse
 %Multiple institutes are typeset as follows:
-\author{Firstname Lastname\inst{1} \and Firstname Lastname\inst{2} }
+%\author{Firstname Lastname\inst{1} \and Firstname Lastname\inst{2} }
 %If there are too many authors, use \authorrunning
 %\authorrunning{First Author et al.}
 
 \institute{
-Insitute 1\\
+University of Waterloo\\
 \email{...}\and
-Insitute 2\\
+University of Waterloo\\
 \email{...}
 }
 \fi
 			
 \maketitle
-
+%%%%%%%%%%%%%   abstract need to be added!!!! %%%%%%%%%
 \begin{abstract}
-Abstract goes here
+Traditionally, there are several methods to sovle the question answering problem. In our project, we are aiming to solve this problem by nueral network in attentive model.
+\keywords{Deep Learning, Nueral Network, NLP}
 \end{abstract}
 
-\keywords{...}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Introduction}\label{sec:intro}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\blindtext\todo{Refine me}
+%\blindtext\todo{Refine me}
 
-Winery~\cite{Winery} is graphical \commentontext{modeling}{modeling with one \enquote{l}, because of AE} tool.
+%Winery~\cite{Winery} is graphical \commentontext{modeling}{modeling with one \enquote{l}, because of AE} tool.
 
-\begin{figure}
-Simple Figure
-\caption{Simple Figure}
-\label{fig:simple}
-\end{figure}
 
-\begin{table}
-\caption{Simple Table}
+Natural Language Processing (NLP), as one of the artificial intelligence topic, is becoming more and more popular recently. It can also be divided into several parts like text to speech, speech recognition, information retrieval, etc. Our project focuses on getting the information from a passage of text. Our project is aimed to training machine to Read and Comprehend. When an article is given, the machine could automatically answer the questions. This project is one of the topic in Nature language processing, enabling computers to derive meaning from human or natural language input.  
+Dataset: In our project, we will be working with question answering using the Machine Comprehension Test (MCTest) dataset created by Microsoft [1]. For the story generate, they ensured that the data is the same quality as another set and also limited the text to children’s stories, so that it could be easily understand. Limited vocabulary: The lowercase words in the story, questions, and answers were stemmed from list of approximately 8000 words that a 7 year old is likely to know. Multiple-sentence questions: At least two of the questions need multiple sentences to answer. As each story is fictional, the answers can only be found in the story itself, which requires high-level machine comprehension without any world knowledge.
 
-\label{tab:simple}
-Simple Table
-\end{table}
 
-cref Demonstration: Cref at beginning of sentence, cref in all other cases.
 
-\Cref{fig:simple} shows a simple fact, although \cref{fig:simple} could also show something else.
+\section{Review of literature}
+\subsubsection*{ Traditional baseline methods}
+Majority baseline (maximum frequency) picks the entity most frequently observed in the context document.
+Exclusive majority (exclusive frequency) chooses the entity most frequently observed in the context but not observed in the query. The idea behind this exclusion is that the placeholder is unlikely to be mentioned twice in a single Cloze form query[2]. 
+Word Distance Benchmark: The main idea is that choose the shortest distance among all of the answers to the question’s key words.
 
-\Cref{tab:simple} shows a simple fact, although \cref{tab:simple} could also show something else.
 
-\Cref{sec:intro} shows a simple fact, although \cref{sec:intro} could also show something else.
+\subsubsection*{ Traditional Frame-Semantic Parsing}
+Frame-semantic parsing attempts to identify predicates and their arguments, allowing models access to information about “who did what to whom”. And we could see some of the language strategy patterns as below.
+
+%%%%%%%%need to add figure
+
+But this method has some limitations for can not possess the capability to generalize through a language model beyond exploiting one during the parsing phase[2]. And what is more, teaching machines to read natural language documents remains an elusive challenge. Machine reading systems can be tested on their ability to answer questions posed on the contents of documents that they have seen, but until now large scale training and test datasets have been missing for this type of evaluation. In other words, those are limited on training dataset.
+
+\subsubsection*{ Comprehension with Syntax, Frames, and Semantics}
+Semantic: frame semantic parsing (Das et al., 2014) is aimed to extract frame-specific predicate-argument structures from sentences. [3]
+Syntax: given each candidate answer, we attempt to transform the question to a statement using the  extraction rules[4].
+But according to the error analysis suggests that deeper linguistic analysis and inferential reasoning can yield further improvements on this task.
+
+
+\subsubsection*{ Comprehension with Discourse Relations[5]}
+The model jointly identifies relevant sentences, establishes relations between them and predicts an answer. The key idea is to implant discourse analysis into a joint model for comprehension. And the drawback of this model is that the accuracy varies significantly according to the question type. Which means not really stable. 
+
+\subsubsection*{  Comprehension for Learning Answer-Entailing Structures[6]}
+We posit that there is a hidden (latent) structure that explains the relation between the question, correct answer, and text. For this given structure, the correctness of the answer is evident. Since the structure is latent, it must be inferred. Firstly, we should presents a unified max-margin framework that learns to find these hidden structures (given a corpus of question-answer pairs), and then uses what it learns to answer machine comprehension questions on novel texts. But the drawback of this method is that since inference is cheaply modelled via alignment structure, we lack the ability to deeply reason about facts or numbers. 
+
+\section{Research for Neural Network}
+
+\subsubsection*{Deep LSTM Reader Model}
+The Deep LSTM Reader embed long sequences into a vector representation which contains enough information to generate a full translation in another language. The result is that this model processes each document query pair as a single long sequence. Given the embedded document and query the network predicts which token in the document answers the query. So this one is the old version of neural networking.
+
+\subsubsection*{Impatient Reader Model}
+The Impatient Reader focuses on the passages of a context document that are most likely to inform the answer to the query. We can go further by equipping the model with the ability to reread from the document as each query token is read. The result is an attention mechanism that allows the model to recurrently accumulate information from the document as it sees each query token, ultimately outputting a final joint document query representation for the answer prediction.
+
+\subsubsection*{Attentive Reader Model}
+The Attentive Reader can be viewed as a generalization of the application of Memory Networks to question answering. That model employs an attention mechanism at the sentence level where each sentence is represented by a bag of embeddings. This model could fix the bottleneck for the width of different words. This attention model first encodes the document and the query using separate bidirectional single layer LSTMs. This task has been tricky because of the number of parameters that must be fine-tuned.
+Although this method cannot be backwards checking as impatient reader but according to some article, these two methods have the similar results, so our group used this model.
+
+
+\section{Description of the project task and the used methods}
+For data preprocessing, we use python NLTK library.
+For deep learning part, we use blocks and fuels, Theano framework for deep learning part. 
+
+
+\section{Implementation details and experimental setup}
+For preprocessing part, we firstly setup the NLTK working environment with python and later import some libraries like stem, tokenize, corpus, etc. We deal with deleting punctuation like “,” “.”,etc. Later we also extract questions pattern like “when”, “how”, etc. we change numbers into English words by dictionary. We also do the following step for text preprocessing. 
+
+
+\begin{inparaenum}
+	\item using stop words library to remove stop words
+	\item using regular expression
+	\item define a function and by recursion to convert a number into a verb
+	\item using library to deal with stem words
+	\item using lemmatizatio: Returns the input word unchanged if it cannot be found in WordNet.
+	\item dealing with rawfile and answer file input. To become like…
+	\item getting the entities.
+	\item preprocessing both questions and answers
+\end{inparaenum}
+
+
+\section{Results, performance evaluation, and analysis}
+
+\section{Discussion of results and conclusions}
+
+
+
+
+
 
 Brackets work as designed:
 <test>
@@ -222,5 +277,30 @@ When you use \href{http://www.jabref.org}{JabRef}, you can use the clean up comm
 
 All links were last followed on October 5, 2014.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%% template for figure and table
+\begin{figure}
+	Simple Figure
+	\caption{ Figure}
+	\label{fig:simple}
+\end{figure}
+
+\begin{table}
+	\caption{Simple Table}
+	
+	\label{tab:simple}
+	Simple Table
+\end{table}
+%%%%%%%%%%%%%%%%%%
+cref Demonstration: Cref at beginning of sentence, cref in all other cases.
+
+\Cref{fig:simple} shows a simple fact, although \cref{fig:simple} could also show something else.
+
+\Cref{tab:simple} shows a simple fact, although \cref{tab:simple} could also show something else.
+
+\Cref{sec:intro} shows a simple fact, although \cref{sec:intro} could also show something else.
+%%%%%%%%%%%%%%%%%%%%%%%%%
+
 
 \end{document}
