@@ -197,7 +197,7 @@ There are also several traditinal methods.Firstly, it is traditional Frame-Seman
 	\centering
 	\begin{subfigure}{.5\textwidth}
 		\centering
-		\includegraphics[width=1\linewidth]{../parsing.png}
+		\includegraphics[width=1\linewidth]{../pic/parsing.png}
 		\caption{ROC}
 		\label{figure 1:Frame-Semantic Parsing}
 	\end{subfigure}
@@ -212,7 +212,7 @@ Syntax: given each candidate answer, we attempt to transform the question to a s
 	\centering
 	\begin{subfigure}{.5\textwidth}
 		\centering
-		\includegraphics[width=1\linewidth]{../sematic.png}
+		\includegraphics[width=1\linewidth]{../pic/sematic.png}
 		\caption{ROC}
 		\label{figure 2:sematic parsing}
 	\end{subfigure}
@@ -223,7 +223,7 @@ Syntax: given each candidate answer, we attempt to transform the question to a s
 	\centering
 	\begin{subfigure}{.5\textwidth}
 		\centering
-		\includegraphics[width=1\linewidth]{../syntax.png}
+		\includegraphics[width=1\linewidth]{../pic/syntax.png}
 		\caption{ROC}
 		\label{figure 3:syntax}
 	\end{subfigure}
@@ -238,7 +238,7 @@ Comprehension with Discourse Relations[5].The model jointly identifies relevant 
 	\centering
 	\begin{subfigure}{.5\textwidth}
 		\centering
-		\includegraphics[width=1\linewidth]{../disclosure.png}
+		\includegraphics[width=1\linewidth]{../pic/disclosure.png}
 		\caption{ROC}
 		\label{figure 4:disclosure method}
 	\end{subfigure}
@@ -250,7 +250,7 @@ Comprehension for Learning Answer-Entailing Structures[6].We posit that there is
 	\centering
 	\begin{subfigure}{.5\textwidth}
 		\centering
-		\includegraphics[width=1\linewidth]{../disclosure.png}
+		\includegraphics[width=1\linewidth]{../pic/disclosure.png}
 		\caption{ROC}
 		\label{figure 5:answer entailing method}
 	\end{subfigure}
@@ -277,7 +277,7 @@ The Deep LSTM Reader embed long sequences into a vector representation which con
 	\centering
 	\begin{subfigure}{.5\textwidth}
 		\centering
-		\includegraphics[width=1\linewidth]{../LSTM.png}
+		\includegraphics[width=1\linewidth]{../pic/LSTM.png}
 		\caption{ROC}
 		\label{figure 6:LSTM}
 	\end{subfigure}
@@ -291,7 +291,7 @@ The Impatient Reader focuses on the passages of a context document that are most
 	\centering
 	\begin{subfigure}{.5\textwidth}
 		\centering
-		\includegraphics[width=1\linewidth]{../impa.png}
+		\includegraphics[width=1\linewidth]{../pic/impa.png}
 		\caption{ROC}
 		\label{figure 7:impatient reader}
 	\end{subfigure}
@@ -304,7 +304,7 @@ Although this method cannot be backwards checking as impatient reader but accord
 	\centering
 	\begin{subfigure}{.5\textwidth}
 		\centering
-		\includegraphics[width=1\linewidth]{../attentive.png}
+		\includegraphics[width=1\linewidth]{../pic/attentive.png}
 		\caption{ROC}
 		\label{figure 8:attentive model}
 	\end{subfigure}
@@ -330,6 +330,17 @@ Reproducibility being an important feature of both Fuel and Blocks, the fuel con
 Theano is a compiler for mathematical expressions in Python that combines the convenience of NumPy syntax with the speed of optimized native machine language. The user composes mathematical expressions in a high-level description that mimics NumPy syntax and semantics, while being statically typed and functional (as opposed to imperative). These expressions allow Theano to provide symbolic differentiation. [11]
 Theano was introduced to the machine learning community by Bergstra et al. (2010) as a CPU and GPU mathematical compiler, demonstrating how it can be used to symbolically define mathematical functions, automatically derive gradient expressions, and compile these expressions into executable functions that outperform implementations using other existing tools[12].
 \section{compare of original method and the method we used}
+For preprocessing part:
+1) split the story dataset into one story one file, and do the same thing on the related answer dataset 
+2) label correct answers obtained from corresponding answer file
+in each story file 
+3) convert ‘n’t’ to ‘not’ using Regular Expression and numbers to words using a recrusive function implemented by ourselves on story, questions and answers in each story file 
+4) lowercase all text of stories, tokenize them, then build a vocabulary file without repeat words
+5) find out entities in each story and replace them with entity identifiers, then add the corresponding entity and entity identifier list below the questions
+6) delete punctuations on the text of each story, the reason for doing this after step 5 is that punctuations will help to identify the entities 
+7) remove stop words, lemmatization and stemming on each story dealing with NLTK library functions
+8) preprocess both questions and answers using the entity list gained from step 5
+
 The Attentive Reader can be viewed as a generalisation of the application of Memory Networks to question answering. That model employs an attention mechanism at the sentence level where each sentence is represented by a bag of embeddings. The Attentive Reader employs a finer grained token level attention mechanism where the tokens are embedded given their entire future and past context in the input document. 
 The representation r of the document d is formed by a weighted sum of these output vectors. These weights are interpreted as the degree to which the network attends to a particular token in the document. Given this attention score the embedding of the document r is computed as the weighted sum of the token embeddings. 
 
