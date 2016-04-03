@@ -1,0 +1,28 @@
+\begin{thebibliography}{1}
+
+\bibitem{richardson2013mctest}
+Matthew Richardson, Christopher~JC Burges, and Erin Renshaw,
+\newblock ``Mctest: A challenge dataset for the open-domain machine
+  comprehension of text.,''
+\newblock in {\em EMNLP}, 2013, vol.~1, p.~2.
+
+\bibitem{wang2015machine}
+Hai Wang and Mohit Bansal Kevin Gimpel~David McAllester,
+\newblock ``Machine comprehension with syntax, frames, and semantics,''
+\newblock {\em ACL: 7th International Joint Conference on Natural Language
+  Processing, Volume 2: Short Papers}, p. 700, 2015.
+
+\bibitem{NIPS2015}
+Karl~Moritz Hermann, Tomas Kocisky, Edward Grefenstette, Lasse Espeholt, Will
+  Kay, Mustafa Suleyman, and Phil Blunsom,
+\newblock ``Teaching machines to read and comprehend,''
+\newblock in {\em Advances in Neural Information Processing Systems 28},
+  C.~Cortes, N.~D. Lawrence, D.~D. Lee, M.~Sugiyama, and R.~Garnett, Eds., pp.
+  1684--1692. Curran Associates, Inc., 2015.
+
+\bibitem{sachan2015learning}
+Mrinmaya Sachan, Avinava Dubey, Eric~P Xing, and Matthew Richardson,
+\newblock ``Learning answerentailing structures for machine comprehension,''
+\newblock in {\em Proceedings of ACL}, 2015.
+
+\end{thebibliography}
