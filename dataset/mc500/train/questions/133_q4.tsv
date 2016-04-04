@@ -3,8 +3,12 @@ Author: 3794927112;Work Time(s): 1438;Qual. score: 80;Creativity Words: up,shape
 @entity3 and @entity4 wanted to get something to eat for lunch. @entity1 and @entity2 went to school lunch room, but @entity3 and @entity4 wanted to leave and get something outside. They both go to the same school and have the same lunch period, which is how they know each other. They are allowed to leave school for One hour for lunch. They get together and rule out pizza, pasta, spicy food and chips. They also want to go somewhere close because they only have an hour. They know there are two places that have burgers and fries close by. @entity3 loves burgers and @entity4 loves fries. @entity3 says that @entity0 has good burgers. @entity4 says that @entity5 has good fries. They now have a problem. "How are we going to pick where we are going to go?" says @entity4. @entity3 answers "Let's go to @entity0 today and tomorrow let's go to @entity5." @entity4, being a good friend, says OK. They leave school and go to eat burgers and fries.
 
 @placeholder do @entity4 and @entity3 know each other
-
 lunch period
+
+@entity5
+@entity0
+lunch period
+fries
 
 @entity0:Great Burger
 @entity1:Sam

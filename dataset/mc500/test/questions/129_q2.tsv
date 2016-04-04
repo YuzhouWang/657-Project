@@ -3,8 +3,12 @@ Author: 3703572249;Work Time(s): 615;Qual. score: 85;Creativity Words: zoo,ham,s
 @entity0 the penguin lived at the zoo. @entity0 loved to lie on his towel outside during the summer. In the winter @entity0 would get too cold and would stay in his house. @entity0 loved the zookeeper's helper @entity2. The zookeeper's name was @entity3, but he never came in to see @entity0. @entity2 would feed @entity0 treats all summer long when he was working. In the spring, @entity1 was the zookeeper's helper and would never feed @entity0 treats, so @entity0 did not like him. @entity0 loved that @entity2 would give him was fish more than anything. @entity0 also liked bananas, oranges and apples, but fish was his favorite. @entity0 would stick his tongue out at the visitors to the zoo, other times he turn around and show them his back because they were always looking at @entity0 and he did not like that. Sometimes he would wave his arm to some visitors if they seemed to be nice. @entity0 loved the summer; it was his favorite time of the year. He got treats and his favorite helper @entity2 worked during the summer.
 
 @placeholder was @entity0's favorite helper
+@entity2
 
 @entity2
+@entity3
+apple
+@entity1
 
 @entity0:Steve
 @entity1:Tim

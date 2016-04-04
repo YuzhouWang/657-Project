@@ -1,12 +1,16 @@
 Author: 1844466225;Work Time(s): 3425
 
-@entity1 the cat lives with the @entity0 family. Before @entity1 lived with the @entity0 family he livedwith the @entity2 family and before he lived with the @entity2 family he lived with the @entity3. The @entity0 family used to live in a cabin in the woods. Then they moved to anapartment in the city. Now they live in a house outside of the city. @entity1 liked all of thefamilies that he had lived with but likes the @entity0 family the best. @entity1 likes livingwith the @entity0 family so much because they are nice to him and always play with him butalso because they have lived in such great places. @entity1 liked living in the cabin in thewoods and in the apartment in the city but neither of these were his were his favoriteplace to live. @entity1 favorite place to live is in the new house the @entity0 family boughtoutside of the city. The home is very large and @entity1 has a lot of room to run and play.
+@entity1 the cat lives with the @entity0 family. Before @entity1 lived with the @entity0 family he lived with the @entity2 family and before he lived with the @entity2 family he lived with the @entity3 family. The @entity0 family used to live in a cabin in the woods. Then they moved to an apartment in the city. Now they live in a house outside of the city. @entity1 liked all of the families that he had lived with but likes the @entity0 family the best. @entity1 likes living with the @entity0 family so much because they are nice to him and always play with him but also because they have lived in such great places. @entity1 liked living in the cabin in the woods and in the apartment in the city but neither of these were his were his favorite place to live. @entity1 favorite place to live is in the new house the @entity0 family bought outside of the city. The home is very large and @entity1 has a lot of room to run and play.
 
 @placeholder type of home does the @entity0 family live in
-
 house
+
+cabin
+city
+house
+apartment
 
 @entity0:Jones
 @entity1:Paws
 @entity2:Smith
-@entity3:Petersfamily
+@entity3:Peters

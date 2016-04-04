@@ -252,7 +252,7 @@ scram
 yogurt
 claws
 we
-wo
+rolled
 smelled
 drew
 news
@@ -1423,7 +1423,6 @@ closer
 wire
 closet
 pattern
-rolled
 marsha
 closed
 pants
@@ -1455,6 +1454,7 @@ mika
 moved
 finished
 choices
+will
 wild
 almost
 helped

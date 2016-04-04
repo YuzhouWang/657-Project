@@ -3,8 +3,12 @@ Author: 1444843715;Work Time(s): 619;Qual. score: 80;Creativity Words: snack,mea
 @entity2 went to the store.  She needed to buy some flowers.  She also needed to buy a snack and a bow.  The store is down the street.  @entity2's mother drove her to the store.  Her mother is named June.  @entity2 looked around for the flowers.  She found some pink ones.  @entity2 then looked for the snacks.  She wanted cookies not chips.  She found some chocolate cookies.  @entity2 then looked for a bow.  She wanted to get one for her cat.  Her cat is named @entity0.  @entity0 likes wearing bows.  @entity2 also has a dog, but he does not like bows.  His name is @entity1.  @entity2 gave the bow to @entity0 the cat.  He liked it.  @entity2 ate her snack.  She likes chocolate cookies.  @entity2 gave the flowers to her mother.  Her mother was very happy.  She likes flowers.  @entity2 did not get anything for @entity1.  She gave @entity1 a hug instead.  @entity1 likes hugs.  @entity0 does not like hugs.  @entity2 had a great day.
 
 @placeholder snack did @entity2 buy
-
 chocolate cookies
+
+chips
+chocolate cookies
+flowers
+bows
 
 @entity0:James
 @entity1:Sammy

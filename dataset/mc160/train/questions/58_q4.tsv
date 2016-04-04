@@ -1,8 +1,17 @@
 Author: 858903718;Work Time(s): 3085
 
-Molly likes animals.She has a cat.She has a dog.She has a bird.She has a hamster.She has a bunny.Her cat's name is Kitty.Her dog's name is Spike.Her bird's name is Polly.Her hamster's name is Barry.Her bunny's name is Snowball.Kitty plays with yarn.Spike plays with a ball.Polly plays in her cage.Barry runs on his wheel.Snowball eats carrots.
+Molly likes animals. She has a cat. She has a dog. She has a bird. She has a hamster. She has a bunny. Her cat's name is @entity2. Her dog's name is @entity4. Her bird's name is @entity3. Her hamster's name is @entity0. Her bunny's name is @entity1. @entity2 plays with yarn. @entity4 plays with a ball. @entity3 plays in her cage. @entity0 runs on his wheel. @entity1 eats carrots.
 
 @placeholder does molly's dog play with
-
 ball
 
+ball
+fish
+mouse
+paper
+
+@entity0:Barry
+@entity1:Snowball
+@entity4:Spike
+@entity2:Kitty
+@entity3:Polly

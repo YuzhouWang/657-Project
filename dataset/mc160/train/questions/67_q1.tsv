@@ -1,13 +1,16 @@
 Author: 1918645709;Work Time(s): 1464
 
-@entity0 likes to play sports. He spends his time after school playing basketball andbaseball. Sometimes @entity0 pretends he is a famous baseball pitcher for his favorite teamwith his friends. He plays with his friends @entity2 and @entity3. @entity0 also plays pretendwhen he is alone. He has an imaginary friend named @entity4. @entity4 is an elephant who watchestelevision with @entity0.@entity2 likes playing baseball but she also likes to paint. @entity2's favorite class at schoolis art. She likes making pictures of flowers. Her teacher says she is a good artist. Shepainted a picture of a tree for her teacher. There were red and yellow leaves on it. @entity1 apples on it.When @entity3 goes home after baseball, he likes to eat a snack. He eats carrots andbananas. If he is a good boy his mom, Mrs. Smith, sometimes gives him milk andcookies. Afterwards, @entity3 finishes his homework.
+@entity0 likes to play sports. He spends his time after school playing basketball and baseball. Sometimes @entity0 pretends he is a famous baseball pitcher for his favorite team with his friends. He plays with his friends @entity1 and @entity2. @entity0 also plays pretend when he is alone. He has an imaginary friend named @entity3. @entity3 is an elephant who watches television with @entity0. @entity1 likes playing baseball but she also likes to paint. @entity1's favorite class at school is art. She likes making pictures of flowers. Her teacher says she is a good artist. She painted a picture of a tree for her teacher. There were red and yellow leaves on it. It had apples on it. When @entity2 goes home after baseball, he likes to eat a snack. He eats carrots and bananas. If he is a good boy his mom, Mrs. Smith, sometimes gives him milk and cookies. Afterwards, @entity2 finishes his homework.
 
-@placeholder does @entity2 like to paint
-
+@placeholder does @entity1 like to paint
 flowers
 
+flowers
+elephants
+bugs
+trees
+
 @entity0:Timothy
-@entity1:Ithad
-@entity2:Mandy
-@entity3:Andrew
-@entity4:Sean
+@entity1:Mandy
+@entity2:Andrew
+@entity3:Sean

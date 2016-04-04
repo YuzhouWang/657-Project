@@ -3,8 +3,12 @@ Author: 31729763;Work Time(s): 963;Qual. score: 80;Creativity Words: yogurt,butt
 All the animals were having a picnic. @entity0 brought hotdogs for everyone.  All the animals came to make their hotdogs.  @entity5 put ketchup on his hotdog.  @entity6 put mustard on his hotdog.  @entity3 put ketchup and mustard on his hotdog.  @entity0 and @entity2 did not put ketchup or mustard on their hotdog. @entity4 looked at the hotdogs.  He did not like hotdogs at all.  He was very hungry.  He looked around for something else to eat.  @entity6 had brought chips, but @entity4 did not like chips.  @entity3 had brought salad, but @entity4 did not like salad.  @entity2 had brought apples, but @entity4 did not like apples. @entity5 brought carrots, but @entity4 did not like carrots. @entity4 looked around for something that he liked.  Then he saw something near the edge of the meadow.  It was a bunch of red strawberries.  @entity4 liked strawberries very much.  He took a basket and gathered up as many strawberries as he could and brought them to the picnic.  @entity1 was happy, and @entity4 was not hungry any more.
 
 @placeholder does not like hotdogs at all
-
 @entity4
+
+@entity3
+@entity4
+@entity0
+@entity5
 
 @entity0:Turtle
 @entity1:Everyone

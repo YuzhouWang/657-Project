@@ -329,11 +329,12 @@ def get_s_q_a_e():
 		question3 = q3 + '\n\n' + answer3 + '\n\n' 
 		question4 = q4 + '\n\n' + answer4 + '\n\n' 
 
-		#four questions in one file
+		'''#four questions in one file
 		qfile = './%s/%s/questions/%d.tsv' % (source, dataset, i)
 		question = info_story + question1 + question2 + question3 + question4 + entity_list
 		with open(qfile, "w") as f:
 			f.write(question)
+
 		
 		#each questions in one file
 		q = []			
@@ -341,6 +342,47 @@ def get_s_q_a_e():
 		question2 = info_story + question2 + entity_list
 		question3 = info_story + question3 + entity_list
 		question4 = info_story + question4 + entity_list
+		q.append(question1) 
+		q.append(question2)
+		q.append(question3) 
+		q.append(question4) 
+
+		for j in range(0, 4):
+			qfile = './%s/%s/questions/%d_q%s.tsv' % (source, dataset, i, j+1)
+			with open(qfile, "w") as f:
+				f.write(q[j])
+		'''
+
+		#each questions with optinal answersin one file
+		q = []			
+		question1 = info_story + q1 + '\n'+ \
+					answer1 + '\n\n' + \
+					preprocess_answer(content[4], entities) + '\n' + \
+					preprocess_answer(content[5], entities) + '\n' + \
+					preprocess_answer(content[6], entities) + '\n' + \
+					preprocess_answer(content[7], entities) + '\n\n' + \
+					entity_list
+		question2 = info_story + q2 + '\n'+ \
+					answer2 + '\n\n' + \
+					preprocess_answer(content[9], entities) + '\n' + \
+					preprocess_answer(content[10], entities) + '\n' + \
+					preprocess_answer(content[11], entities) + '\n' + \
+					preprocess_answer(content[12], entities) + '\n\n' + \
+					entity_list
+		question3 = info_story + q3 + '\n'+ \
+					answer3 + '\n\n' + \
+					preprocess_answer(content[14], entities) + '\n' + \
+					preprocess_answer(content[15], entities) + '\n' + \
+					preprocess_answer(content[16], entities) + '\n' + \
+					preprocess_answer(content[17], entities) + '\n\n' + \
+					entity_list
+		question4 = info_story + q4 + '\n'+ \
+					answer4 + '\n\n' + \
+					preprocess_answer(content[19], entities) + '\n' + \
+					preprocess_answer(content[20], entities) + '\n' + \
+					preprocess_answer(content[21], entities) + '\n' + \
+					preprocess_answer(content[22], entities) + '\n\n' + \
+					entity_list
 		q.append(question1) 
 		q.append(question2)
 		q.append(question3) 

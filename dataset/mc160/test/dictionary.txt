@@ -5,7 +5,6 @@ woods
 sleep
 spiders
 saved
-looking
 feeding
 buddy
 presents
@@ -249,7 +248,7 @@ yogurt
 claws
 we
 men
-wo
+rolled
 confusion
 were
 however
@@ -548,7 +547,7 @@ morning
 living
 jackson
 opened
-partyscap
+looking
 monster
 cars
 seventh
@@ -817,7 +816,7 @@ sneeze
 pool
 wife
 tricks
-having
+hello
 alright
 all
 forget
@@ -856,6 +855,7 @@ grabs
 past
 winds
 pass
+chalk
 what
 stood
 clock
@@ -1191,7 +1191,7 @@ walked
 far
 fresh
 berries
-hello
+sounded
 once
 jason
 melts
@@ -1210,6 +1210,7 @@ garden
 kitty
 telling
 wipe
+having
 watered
 ryan
 try
@@ -1259,7 +1260,6 @@ animals
 salad
 this
 ride
-sounded
 meet
 drops
 fetch
@@ -1425,7 +1425,6 @@ humans
 crayons
 puts
 superhero
-rolled
 chipmunks
 bought
 janet
@@ -1457,7 +1456,7 @@ present
 homes
 vanilla
 harder
-chalk
+will
 wild
 at
 ringing
