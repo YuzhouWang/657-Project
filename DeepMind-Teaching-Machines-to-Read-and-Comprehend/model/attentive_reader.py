@@ -49,9 +49,18 @@ class Model():
         context = tensor.imatrix('context')
         context_mask = tensor.imatrix('context_mask')
         answer = tensor.ivector('answer')
-        # answer = tensor.ivector('answer')
         candidates = tensor.imatrix('candidates')
         candidates_mask = tensor.imatrix('candidates_mask')
+
+        # and the multple choice answers:
+        ans1 = tensor.ivector('ans1')
+        ans1_mask = tensor.ivector('ans1_mask')
+        ans2 = tensor.ivector('ans2')
+        ans2_mask = tensor.ivector('ans2_mask')
+        ans3 = tensor.ivector('ans3')
+        ans3_mask = tensor.ivector('ans3_mask')
+        ans4 = tensor.ivector('ans4')
+        ans4_mask = tensor.ivector('ans4_mask')
 
         bricks = []
 
@@ -60,8 +69,6 @@ class Model():
         question_mask = question_mask.dimshuffle(1, 0)
         context = context.dimshuffle(1, 0)
         context_mask = context_mask.dimshuffle(1, 0)
-        print "question:"
-        print question
 
         # Embed questions and cntext
         embed = LookupTable(vocab_size, config.embed_size, name='question_embed')
@@ -69,6 +76,10 @@ class Model():
 
         qembed = embed.apply(question)
         cembed = embed.apply(context)
+        a1embed = embed.apply(ans1)
+        a2embed = embed.apply(ans2)
+        a3embed = embed.apply(ans3)
+        a4embed = embed.apply(ans4)
 
         qlstms, qhidden_list = make_bidir_lstm_stack(qembed, config.embed_size, question_mask.astype(theano.config.floatX),
                                                      config.question_lstm_size, config.question_skip_connections, 'q')
@@ -121,14 +132,47 @@ class Model():
         probs = out_mlp.apply(tensor.concatenate([attended, qenc], axis=1))
         probs.name = 'probs'
 
-        is_candidate = tensor.eq(tensor.arange(config.n_entities, dtype='int32')[None, None, :],
-                                 tensor.switch(candidates_mask, candidates, -tensor.ones_like(candidates))[:, :, None]).sum(axis=1)
-        probs = tensor.switch(is_candidate, probs, -1000 * tensor.ones_like(probs))
+        # not needed anymore, since we're not only looking at entities
+        # is_candidate = tensor.eq(tensor.arange(config.n_entities, dtype='int32')[None, None, :],
+        #                          tensor.switch(candidates_mask, candidates, -tensor.ones_like(candidates))[:, :, None]).sum(axis=1)
+        # probs = tensor.switch(is_candidate, probs, -1000 * tensor.ones_like(probs))
 
         # Calculate prediction, cost and error rate
-        pred = probs.argmax(axis=1)
-        print "pred"
-        print pred
+
+        # vocab = tensor.arange(10)
+        # probs = numpy.asarray([0, 0.8, 0, 0.2], dtype=numpy.float32)
+        # context = numpy.asarray([3, 2, 8, 1], dtype=numpy.int32)
+        # ans3 =  numpy.asarray([2, 8, 1], dtype=numpy.int32)
+        # ans1 =  numpy.asarray([1, 3, 4], dtype=numpy.int32)
+        # ans2 =  numpy.asarray([1, 1, 4], dtype=numpy.int32)
+
+        # convert probs vector to one that's the same size as vocab, with all zeros except probs:
+        # probs = tensor.switch(is_candidate, probs, -1000 * tensor.ones_like(probs))
+        probsPadded = tensor.zeros_like(vocab_size, dtype=numpy.float32)
+        probsSubset = probsPadded[cembed] #TODO this should be masked
+        b = tensor.set_subtensor(probsSubset, probs)
+
+        # get the similarity score of each (masked) answer with the context probs:
+        ans1probs = b[a1enc]
+        ans1score = tensor.switch(ans1_mask, ans1probs, tensor.zeros_like(ans1probs)).sum()
+        ans2probs = b[a2enc]
+        ans2score = ans2probs.sum()
+        ans3probs = b[a3enc]
+        ans3score = ans3probs.sum()
+        ans4probs = b[a4enc]
+        ans4score = ans4probs.sum()
+
+        # and pick the best one:
+        allans = tensor.stacklists([ans1score, ans2score, ans3score, ans4score])
+        pred = tensor.argmax(allans)
+
+        cg = ComputationGraph([ans1probs, ans1score, ans2probs, ans2score, ans3probs, ans3score, ans4probs, ans4score, allans, pred])
+        f = cg.get_theano_function()
+        out = f()
+
+        #pred = probs.argmax(axis=1)
+        #print "pred"
+        #print pred TODO CHANGE THIS!
         cost = Softmax().categorical_cross_entropy(answer, probs).mean()
         error_rate = tensor.neq(answer, pred).mean()
 

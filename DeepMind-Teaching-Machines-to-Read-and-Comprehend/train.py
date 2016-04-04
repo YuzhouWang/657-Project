@@ -39,15 +39,15 @@ if __name__ == "__main__":
     config = importlib.import_module('.%s' % model_name, 'config')
 
     # Build datastream
-    path = os.path.join(os.getenv("DATAPATH"), "deepmind-qa/cnn/questions/training")
-    valid_path = os.path.join(os.getenv("DATAPATH"), "deepmind-qa/cnn/questions/validation")
-    vocab_path = os.path.join(os.getenv("DATAPATH"), "deepmind-qa/cnn/stats/training/vocab.txt")
+    path = os.path.join(os.getenv("DATAPATH"), "mctest-qa/questions/training")
+    valid_path = os.path.join(os.getenv("DATAPATH"), "mctest-qa/questions/validation")
+    vocab_path = os.path.join(os.getenv("DATAPATH"), "mctest-qa/stats/training/vocab.txt")
 
     ds, train_stream = data.setup_datastream(path, vocab_path, config)
     _, valid_stream = data.setup_datastream(valid_path, vocab_path, config)
 
     dump_path = os.path.join("model_params", model_name+".pkl")
-    
+
     # Build model
     m = config.Model(config, ds.vocab_size)
 

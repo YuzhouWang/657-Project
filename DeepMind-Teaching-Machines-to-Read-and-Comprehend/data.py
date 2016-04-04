@@ -19,7 +19,7 @@ logger = logging.getLogger(__name__)
 
 class QADataset(Dataset):
     def __init__(self, path, vocab_file, n_entities, need_sep_token, **kwargs):
-        self.provides_sources = ('context', 'question', 'answer', 'candidates')
+        self.provides_sources = ('context', 'question', 'answer', 'candidates', 'a1', 'a2', 'a3', 'a4')
 
         self.path = path
 
@@ -56,10 +56,18 @@ class QADataset(Dataset):
 
         lines = [l.rstrip('\n') for l in open(os.path.join(self.path, request))]
         #print lines
-        ctx = lines[2]
-        q = lines[4]
-        a = lines[6]
-        cand = [s.split(':')[0] for s in lines[8:]]
+        # ctx = lines[2]
+        # q = lines[4]
+        # a = lines[6]
+        # cand = [s.split(':')[0] for s in lines[8:]]
+        ctx = lines[4]
+        q = lines[6]
+        a = lines[7]
+        a1 = lines[8]
+        a2 = lines[9]
+        a3 = lines[10]
+        a4 = lines[11]
+        cand = [s.split(':')[0] for s in lines[13:]]
 
         entities = range(self.n_entities)
         while len(cand) > len(entities):
@@ -72,7 +80,11 @@ class QADataset(Dataset):
         ctx = self.to_word_ids(ctx, cand_mapping)
         q = self.to_word_ids(q, cand_mapping)
         cand = numpy.array([self.to_word_id(x, cand_mapping) for x in cand], dtype=numpy.int32)
-        a = numpy.int32(self.to_word_id(a, cand_mapping))
+        a = numpy.int32(a) #self.to_word_id(a, cand_mapping))
+        a1 = self.to_word_ids(a1, cand_mapping)
+        a2 = self.to_word_ids(a2, cand_mapping)
+        a3 = self.to_word_ids(a3, cand_mapping)
+        a4 = self.to_word_ids(a4, cand_mapping)
 
         if not a < self.n_entities:
             raise ValueError("Invalid answer token %d"%a)
@@ -87,7 +99,7 @@ class QADataset(Dataset):
         if not numpy.all(q >= 0):
             raise ValueError("Question word id negative: %d"%int(q.min()))
 
-        return (ctx, q, a, cand)
+        return (ctx, q, a, cand, a1, a2, a3, a4)
 
 class QAIterator(IterationScheme):
     requests_examples = True
@@ -123,12 +135,12 @@ class ConcatCtxAndQuestion(Transformer):
         if request is not None:
             raise ValueError('Unsupported: request')
 
-        ctx, q, a, cand = next(self.child_epoch_iterator)
+        ctx, q, a, cand, a1, a2, a3, a4 = next(self.child_epoch_iterator)
         print "answer = " + answer
         if self.concat_question_before:
-            return (numpy.concatenate([q, self.sep, ctx]), a, cand)
+            return (numpy.concatenate([q, self.sep, ctx]), a, cand, a1, a2, a3, a4)
         else:
-            return (numpy.concatenate([ctx, self.sep, q]), a, cand)
+            return (numpy.concatenate([ctx, self.sep, q]), a, cand, a1, a2, a3, a4)
 
 class _balanced_batch_helper(object):
     def __init__(self, key):
@@ -152,7 +164,7 @@ def setup_datastream(path, vocab_file, config):
     stream = Unpack(stream)
 
     stream = Batch(stream, iteration_scheme=ConstantScheme(config.batch_size))
-    stream = Padding(stream, mask_sources=['context', 'question', 'candidates'], mask_dtype='int32')
+    stream = Padding(stream, mask_sources=['context', 'question', 'candidates', 'a1', 'a2', 'a3', 'a4'], mask_dtype='int32')
 
     return ds, stream
 
