@@ -158,9 +158,11 @@ def get_entities(story):
 
 def preprocess_story(story):
 	#just '\\newline' will match ''
-	story = re.sub(r'\\newline', '', story)
+	story = re.sub(r'\\newline\\newline', ' ', story)
+	story = re.sub(r'\\newline', ' ', story)
 	story = re.sub(r'\\tab', '', story)
 	#expand contractions, like don't to do not
+	story = re.sub(r'won\'t', 'will not', story)
 	story = re.sub(r'n\'t', ' not', story)
 	#print story
 
