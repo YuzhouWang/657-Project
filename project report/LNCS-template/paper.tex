@@ -204,70 +204,55 @@ There are also several traditinal methods.Firstly, it is traditional Frame-Seman
 \end{figure}
 
 
-
-
-%\begin{figure}[p]
-%	\centering
-%	\begin{subfigure}{.5\textwidth}
-%		\centering
-%		\includegraphics[width=1\linewidth]{../images-update/1-(3)-2.png}
-%		\caption{ROC}
-%		\label{fig:sub1}
-%	\end{subfigure}
-	
-%\end{figure}
-
-
-
 But this method has some limitations for can not possess the capability to generalize through a language model beyond exploiting one during the parsing phase[2]. And what is more, teaching machines to read natural language documents remains an elusive challenge. Machine reading systems can be tested on their ability to answer questions posed on the contents of documents that they have seen, but until now large scale training and test datasets have been missing for this type of evaluation. In other words, those are limited on training dataset.
 
 Other people also have the idea of comprehension with Syntax, Frames, and Semantics method.Semantic: frame semantic parsing is aimed to extract frame-specific predicate-argument structures from sentences[3].
 Syntax: given each candidate answer, we attempt to transform the question to a statement using the extraction rules[4]. We could see figure 2 for sematic and figure 3 for syntax.
-%\begin{figure}[p]
-%	\centering
-%	\begin{subfigure}{.5\textwidth}
-%		\centering
-%		\includegraphics[width=1\linewidth]{../pic/sematic.png}
-%		\caption{ROC}
-%		\label{figure 2:sematic parsing}
-%	\end{subfigure}
+\begin{figure}[p]
+	\centering
+	\begin{subfigure}{.5\textwidth}
+		\centering
+		\includegraphics[width=1\linewidth]{../pic/sematic.png}
+		\caption{ROC}
+		\label{figure 2:sematic parsing}
+	\end{subfigure}
 	
-%\end{figure}
+\end{figure}
 
-%\begin{figure}[p]
-%	\centering
-%	\begin{subfigure}{.5\textwidth}
-%		\centering
-%		\includegraphics[width=1\linewidth]{../pic/syntax.png}
-%		\caption{ROC}
-%		\label{figure 3:syntax}
-%	\end{subfigure}	
-%\end{figure}
+\begin{figure}[p]
+	\centering
+	\begin{subfigure}{.5\textwidth}
+		\centering
+		\includegraphics[width=1\linewidth]{../pic/syntax.png}
+		\caption{ROC}
+		\label{figure 3:syntax}
+	\end{subfigure}	
+\end{figure}
 
 But according to the error analysis suggests that deeper linguistic analysis and inferential reasoning can yield further improvements on this task.
 
 
 Comprehension with Discourse Relations[5].The model jointly identifies relevant sentences, establishes relations between them and predicts an answer. The key idea is to implant discourse analysis into a joint model for comprehension. As we could see in picture 4.And the drawback of this model is that the accuracy varies significantly according to the question type. Which means not really stable. 
-%\begin{figure}[p]
-%	\centering
-%	\begin{subfigure}{.5\textwidth}
-%		\centering
-%		\includegraphics[width=1\linewidth]{../pic/disclosure.png}
-%		\caption{ROC}
-%		\label{figure 4:disclosure method}
-%	\end{subfigure}
-%\end{figure}
+\begin{figure}[p]
+	\centering
+	\begin{subfigure}{.5\textwidth}
+		\centering
+		\includegraphics[width=1\linewidth]{../pic/disclosure.png}
+		\caption{ROC}
+		\label{figure 4:disclosure method}
+	\end{subfigure}
+\end{figure}
 
 Comprehension for Learning Answer-Entailing Structures[6].We posit that there is a hidden (latent) structure that explains the relation between the question, correct answer, and text. For this given structure, the correctness of the answer is evident. Since the structure is latent, it must be inferred. Firstly, we should presents a unified max-margin framework that learns to find these hidden structures (given a corpus of question-answer pairs), and then uses what it learns to answer machine comprehension questions on novel texts. We could see this from figure 5. But the drawback of this method is that since inference is cheaply modelled via alignment structure, we lack the ability to deeply reason about facts or numbers. 
-%\begin{figure}[p]
-%	\centering
-%	\begin{subfigure}{.5\textwidth}
-%		\centering
-%		\includegraphics[width=1\linewidth]{../pic/disclosure.png}
-%		\caption{ROC}
-%		\label{figure 5:answer entailing method}
-%	\end{subfigure}
-%\end{figure}
+\begin{figure}[p]
+	\centering
+	\begin{subfigure}{.5\textwidth}
+		\centering
+		\includegraphics[width=1\linewidth]{../pic/disclosure.png}
+		\caption{ROC}
+		\label{figure 5:answer entailing method}
+	\end{subfigure}
+\end{figure}
 
 
 \section{Research for Neural Network}
@@ -285,39 +270,39 @@ The Long short term memory (LSTM) network, developed by Hochreiter and Schmidhub
 
 The Deep LSTM Reader embed long sequences into a vector representation which contains enough information to generate a full translation in another language. The result is that this model processes each document query pair as a single long sequence. Given the embedded document and query the network predicts which token in the document answers the query. So this one is the old version of neural networking. We could see from figure 6 for LSTM.
 
-%\begin{figure}[p]
-%	\centering
-%	\begin{subfigure}{.5\textwidth}
-%		\centering
-%		\includegraphics[width=1\linewidth]{../pic/LSTM.png}
-%		\caption{ROC}
-%		\label{figure 6:LSTM}
-%	\end{subfigure}
-%\end{figure}
+\begin{figure}[p]
+	\centering
+	\begin{subfigure}{.5\textwidth}
+		\centering
+		\includegraphics[width=1\linewidth]{../pic/LSTM.png}
+		\caption{ROC}
+		\label{figure 6:LSTM}
+	\end{subfigure}
+\end{figure}
 
 
 
 The Impatient Reader focuses on the passages of a context document that are most likely to inform the answer to the query. We can go further by equipping the model with the ability to reread from the document as each query token is read. The result is an attention mechanism that allows the model to recurrently accumulate information from the document as it sees each query token, ultimately outputting a final joint document query representation for the answer prediction. We could see figure 7 for impatient reader.
-%\begin{figure}[p]
-%	\begin{subfigure}{.5\textwidth}
-%		\centering
-%		\includegraphics[width=1\linewidth]{../pic/impa.png}
-%		\caption{ROC}
-%		\label{figure 7:impatient reader}
-%	\end{subfigure}
-%\end{figure}
+\begin{figure}[p]
+	\begin{subfigure}{.5\textwidth}
+		\centering
+		\includegraphics[width=1\linewidth]{../pic/impa.png}
+		\caption{ROC}
+		\label{figure 7:impatient reader}
+	\end{subfigure}
+\end{figure}
 
 The Attentive Reader can be viewed as a generalization of the application of Memory Networks to question answering. That model employs an attention mechanism at the sentence level where each sentence is represented by a bag of embeddings. This model could fix the bottleneck for the width of different words. This attention model first encodes the document and the query using separate bidirectional single layer LSTMs. This task has been tricky because of the number of parameters that must be fine-tuned.
 Although this method cannot be backwards checking as impatient reader but according to some article, these two methods have the similar results, so our group used this model. We could see figure 8 for attentive model.
-%\begin{figure}[p]
-%	\centering
-%	\begin{subfigure}{.5\textwidth}
-%		\centering
-%		\includegraphics[width=1\linewidth]{../pic/attentive.png}
-%		\caption{ROC}
-%		\label{figure 8:attentive model}
-%	\end{subfigure}	
-%\end{figure}
+\begin{figure}[p]
+	\centering
+	\begin{subfigure}{.5\textwidth}
+		\centering
+		\includegraphics[width=1\linewidth]{../pic/attentive.png}
+		\caption{ROC}
+		\label{figure 8:attentive model}
+	\end{subfigure}	
+\end{figure}
 
 \section{Description of the project task and the used methods}
 For data preprocessing, we use python NLTK library.
